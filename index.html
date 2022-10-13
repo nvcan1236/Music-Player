@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="data:;base64,=">
+    <title>caMusic</title>
+</head>
+<body>
+    <div class="container">
+        <div class="app">
+            <div class="dash-board">
+                <div class="head-tool">
+                    <i class="fa-solid fa-arrow-left back-btn"></i>
+                    <span>Now playing</span>
+                    <i class="fa-regular fa-heart heart-icon" ></i>
+                </div>
+                <div class="song-wrapper">
+                    <div class="cd vertical">
+                        <img src="" alt="song image">
+                    </div>
+                    <div class="song-infor">
+                        <h3 class="song-name">That's Hilarious</h3>
+                        <h4 class="song-singer">Charlie Puth</h4>
+                    </div>
+                </div>
+                <div class="song-progress">
+                    <span class="current">00:00</span>
+                    <div>
+                        <input type="range" id="progress" min="0", max="100", value="0" step="1">
+                        <div class="curentProgress"></div>
+                    </div>                    
+                    <span class="duration">00:00</span>
+                </div>
+                <div class="navigator">
+                    <div class="random-btn"><i class="fa-solid fa-shuffle"></i></i></div>
+                    <div class="main-nav">
+                        <div class="prev-btn"><i class="fa-solid fa-backward-step"></i></div>
+                        <div class="play-btn ">
+                            <i class="fa-solid fa-play"></i>
+                            <i class="fa-solid fa-pause"></i>
+                        </div>
+                        <div class="next-btn"><i class="fa-solid fa-forward-step"></i></div>
+                    </div>
+                    <div class="repeat-btn"><i class="fa-solid fa-rotate-left"></i></div>
+                </div>
+                <div class="swipe-btn">
+                    <p>see playlist</p>
+                    <i class="fa-solid fa-sort-down"></i>
+                </div>
+            </div>
+            <div class="play-list">
+                <ul class="song-list">
+                    
+                </ul>
+            </div>
+            <audio src="" id="audio">
+            </audio>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
