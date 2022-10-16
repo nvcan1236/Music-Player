@@ -93,10 +93,10 @@ const app = {
         localStorage.setItem(PLAYER_STOREGE_KEY, JSON.stringify(this.config));
     },
     loadConfig: function() {
-        this.isRandom = this.config.isRandom;
-        this.isRepeat = this.config.isRepeat;
-        this.currentSongIndex = this.config.currentSongIndex;
-        this.defautVolume = this.config.defautVolume;
+        this.isRandom = this.config.isRandom || 0;
+        this.isRepeat = this.config.isRepeat || 0;
+        this.currentSongIndex = this.config.currentSongIndex || 0;
+        this.defautVolume = this.config.defautVolume || 0;
     },
     defineProperties: function() {
         Object.defineProperty(this, 'currentSong', {
