@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -78,6 +79,8 @@ i {
     height: auto;
 }
 
+
+
 .dash-board.hor .song-infor {
     display: inline-block;
     text-align: left;
@@ -140,6 +143,55 @@ i {
     flex: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.volume {
+    position: absolute;
+    bottom: 80px;
+    right: -68px;
+    display: flex;
+    flex-direction: row;
+    transform: rotate(-90deg);
+}
+
+.dash-board.hor .volume {
+    bottom: 54px;
+    right: -62px;
+}
+
+.volume-icon {
+    transform: rotate(90deg);
+}
+
+#volume-control {
+    opacity: 0;
+    transition: .3s ease;
+}
+
+#volume-control {
+    width: 100%;
+    border-radius: 4px;
+    height: 8px;
+    outline: none;
+    -webkit-appearance: none;
+    margin-top: 10px;
+}
+
+#volume-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background: var(--main-red);
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.volume:hover #volume-control{
+    opacity: 1;
 }
 
 .dash-board .song-infor {
@@ -166,6 +218,7 @@ i {
 .dash-board .song-progress {
     justify-content: space-between;
     display: flex;
+    position: relative;
 }
 
 

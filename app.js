@@ -10,6 +10,7 @@ var prevBtn = $('.prev-btn');
 var randomBtn = $('.random-btn');
 var repeatBtn = $('.repeat-btn');
 var progress = $('#progress');
+var volumeControl = $('#volume-control');
 
 const app = {
     songs: [
@@ -85,6 +86,7 @@ const app = {
     isRandom: false,
     isRepeat: false,
     currentSongIndex: 0,
+    defautVolume: 1,
     config: JSON.parse(localStorage.getItem(PLAYER_STOREGE_KEY)) || {},
     setConfig: function(key, value) {
         this.config[key] = value;
@@ -93,6 +95,8 @@ const app = {
     loadConfig: function() {
         this.isRandom = this.config.isRandom;
         this.isRepeat = this.config.isRepeat;
+        this.currentSongIndex = this.config.currentSongIndex;
+        this.defautVolume = this.config.defautVolume;
     },
     defineProperties: function() {
         Object.defineProperty(this, 'currentSong', {
@@ -157,6 +161,14 @@ const app = {
             $('.curentProgress').style.width = progressPercent + '%';
         }
 
+        // xuwr lis khi tang giam am luong
+        volumeControl.oninput = function(e) {
+            var volumeValue = this.value/100;
+            _this.setVolume(volumeValue);
+            _this.defautVolume = volumeValue;
+            _this.setConfig('defautVolume', volumeValue);
+        }
+
 
         // xử lí nút bấm 
         playBtn.onclick = function() {
@@ -209,6 +221,8 @@ const app = {
             cdAnimation.play();
         }
 
+      
+
         // trạng thái icon tim
         $('.heart-icon').onclick = function() {
             this.classList.toggle('favourite');
@@ -232,11 +246,20 @@ const app = {
         }
         
     },
+      // set volume
+    setVolume: function(value) {
+        if(value == 0) {
+
+        }else {
+            audio.volume = value;
+        }
+    },
     loadCurrentSong: function() {
         var name = $('.dash-board .song-name');
         var singer = $('.dash-board .song-singer');
         var cd = $('.dash-board .cd img');
         
+        this.setConfig('currentSongIndex', this.currentSongIndex);
 
         $('body').style = `
             background-image: url(${this.currentSong.image});
@@ -245,13 +268,17 @@ const app = {
         singer.innerText = this.currentSong.singer;
         cd.src = this.currentSong.image;
         audio.src = this.currentSong.path;
+        audio.volume = this.defautVolume;
+        volumeControl.value = this.defautVolume*100;
 
+        console.log(this.defautVolume);
 
         var songItems = $$('.song-item');
         for (var s of songItems) {
             s.classList.remove('current');
         }
         songItems[this.currentSongIndex].classList.add('current');
+
         setTimeout(() => {
             $('.song-item.current').scrollIntoView({
                 behavior : 'smooth',
@@ -321,6 +348,7 @@ const app = {
         this.loadCurrentSong();
 
         this.handleEvent();
+
         repeatBtn.classList.toggle('favourite', this.isRepeat);
         randomBtn.classList.toggle('favourite', this.isRandom);
 
